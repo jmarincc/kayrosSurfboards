@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import GitExpertApp from './GitExpertApp.js';
-import CounterHook from './CounterHook';
+import App from './App'
 
 
 ReactDOM.render(
-  <GitExpertApp/>,
+  <App/>,
   document.getElementById('root')
 );
 
