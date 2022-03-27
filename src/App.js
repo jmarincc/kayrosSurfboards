@@ -2,7 +2,8 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import "bootswatch/dist/lux/bootstrap.min.css";
 import lijadora from './lijadora-pulidora.jpeg';
-//import './App.css';
+import logo_kayros from './logo_kayros.png';
+import './App.css';
 
 const stripePromise = loadStripe("pk_test_51KhCFgJ6bLeWbu1kZmWlqQ8i9Q7yLXlqiLohUaedj3GYFXIQs5Z130udKnObvgyb20sFM88rayFPEO6rFCHQuKks005vUJR1wA");
 const CheckoutForm = ()=>{
@@ -15,33 +16,47 @@ const CheckoutForm = ()=>{
       type:'card',
       card: elements.getElement(CardElement)
     })
+    if(!error){
+      console.log(paymentMethod)
+    }
   }
   
 
-  return <form onSubmit={handleSubmit} >
+  return <form onSubmit={handleSubmit} className="card card-body">
     
     <img 
       src={lijadora}
       alt="lijadora" 
       className='img-fluid'
     />    
-    <CardElement/>
-    <button>
+    <div className='form-group'>
+         <CardElement className="form-control"/>
+    </div>
+  
+    <button className='btn btn-success'>
       Buy
     </button>
   </form>
 }
+
 function App() {
   return (
+    <div>  
+    <img
+      src={logo_kayros}
+      alt="Logo Kayros" 
+      className='logo'
+    /> 
     <Elements stripe={stripePromise}>
       <div className='container p-4'>
         <div className='row'>
-          <div className='.col-md-4 offset-md-4'>
+          <div className='col-md-4 offset-md-4'>
             <CheckoutForm/>
           </div>
         </div>
       </div>
     </Elements>
+    </div>
   );
 }
 
