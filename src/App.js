@@ -42,11 +42,16 @@ const CheckoutForm = ()=>{
 function App() {
   return (
     <div>  
+        <header>
+          <h1>info@kayrossurfboards.com | +34 673 751 414</h1>
+       </header>
+    
     <img
       src={logo_kayros}
       alt="Logo Kayros" 
       className='logo'
     /> 
+    <hr />
     <Elements stripe={stripePromise}>
       <div className='container p-4'>
         <div className='row'>
