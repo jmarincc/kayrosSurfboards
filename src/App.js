@@ -4,6 +4,15 @@ import "bootswatch/dist/lux/bootstrap.min.css";
 import lijadora from './lijadora-pulidora.jpeg';
 import logo_kayros from './logo_kayros.png';
 import './App.css';
+import {Link} from "react-router-dom";
+
+import { 
+  BrowserRouter,
+  Routes,
+  Route 
+} from 'react-router-dom';
+import Registrate from "./Registrate";
+
 
 const stripePromise = loadStripe("pk_test_51KhCFgJ6bLeWbu1kZmWlqQ8i9Q7yLXlqiLohUaedj3GYFXIQs5Z130udKnObvgyb20sFM88rayFPEO6rFCHQuKks005vUJR1wA");
 const CheckoutForm = ()=>{
@@ -29,10 +38,11 @@ const CheckoutForm = ()=>{
       alt="lijadora" 
       className='img-fluid'
     />    
+ 
     <div className='form-group'>
          <CardElement className="form-control"/>
     </div>
-  
+   
     <button className='btn btn-success'>
       Buy
     </button>
@@ -40,29 +50,36 @@ const CheckoutForm = ()=>{
 }
 
 function App() {
+
   return (
+  
     <div>  
-        <header>
-          <h1>info@kayrossurfboards.com | +34 673 751 414</h1>
+      <header>
+        <hr></hr>
+        <nav className="App-nav">
+            <Link style={{color:'white', textDecoration: "none"}} 
+             to="Registrate">Registrate</Link>
+         
+            <Link style={{marginLeft:'10px', color:'white', textDecoration: "none"}} 
+             to="Registrate">Iniciar Sesión</Link>
+         </nav>
+        
+         <h1>info@kayrossurfboards.com | +34 673 751 414</h1>
        </header>
-    
-    <img
-      src={logo_kayros}
-      alt="Logo Kayros" 
-      className='logo'
-    /> 
-    <hr />
-    <Elements stripe={stripePromise}>
-      <div className='container p-4'>
-        <div className='row'>
-          <div className='col-md-4 offset-md-4'>
-            <CheckoutForm/>
-          </div>
-        </div>
-      </div>
-    </Elements>
-    </div>
+      
+       <img
+          src={logo_kayros}
+          alt="Logo Kayros" 
+          className='logo'
+       />
+       <Routes>
+          <Route path='Registrate' element={<Registrate />} />
+       </Routes>
+ </div>
+
   );
+  
 }
+
 
 export default App;
